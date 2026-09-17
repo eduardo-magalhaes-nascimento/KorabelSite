@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { swipeDirection, twoDigits, wrapSlide } from "./carouselUtils";
 import { startAutoplay } from "./carouselAutoplay";
 import { trackPosition } from "./carouselLayout";
+import { siteAsset } from "./siteAsset";
 import "./editorial-carousel.css";
 
 // Original photos only: transparent campaign assets are intentionally not used.
@@ -81,7 +82,7 @@ export default function EditorialCarousel({ products, modalOpen = false }) {
         <div ref={track} className="curated-track" style={{ transform: `translateX(-${trackPosition(index, geometry.step, geometry.maxOffset)}px)` }}>
           {products.map((product, itemIndex) => <article className="curated-item" key={product.id}>
             <div className="curated-photo">
-              <img src={photo(product)} alt={product.alt || `${product.name} — ${product.color}, vista de frente`}
+              <img src={siteAsset(photo(product))} alt={product.alt || `${product.name} — ${product.color}, vista de frente`}
                 style={{ objectPosition: product.objectPosition || "center top" }} loading="lazy" draggable="false" width="1080" height="1350"/>
             </div>
             <div className="curated-meta">

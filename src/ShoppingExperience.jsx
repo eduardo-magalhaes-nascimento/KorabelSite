@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, X, MessageCircle, Copy, Check } from "lucide-react";
+import { siteAsset } from "./siteAsset";
 
 const whatsapp = "https://wa.me/message/UYRBMHAN7V52O1";
-export const productPhoto = p => p.photo || `/images/${p.image}.jpg`;
+export const productPhoto = p => siteAsset(p.photo || `/images/${p.image}.jpg`);
 
 export function ProductCard({ product, index = 0, onSelect }) {
   return <article className="product">
@@ -23,7 +24,7 @@ export function ProductDetails({ product, onClose }) {
   const [photoIndex, setPhotoIndex] = useState(0);
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState(false);
-  const gallery = product.gallery || [productPhoto(product)];
+  const gallery = product.gallery ? product.gallery.map(siteAsset) : [productPhoto(product)];
   const message = `Olá, Korabel! Tenho interesse no ${product.name.toLowerCase()} (${product.color}). Gostaria de saber o valor, tamanhos e outras cores disponíveis.${product.post ? ` https://www.instagram.com/usekorabel/p/${product.post}/` : ""}`;
   useEffect(() => {
     const dialog = ref.current;

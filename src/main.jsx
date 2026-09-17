@@ -18,6 +18,7 @@ import "./collection.css";
 import "./about.css";
 import { ProductCard, ProductDetails, LookCarousel } from "./ShoppingExperience";
 import usePresentation from "./usePresentation";
+import { siteAsset } from "./siteAsset";
 
 const whatsapp = "https://wa.me/message/UYRBMHAN7V52O1";
 const instagram = "https://www.instagram.com/usekorabel/";
@@ -139,7 +140,7 @@ const photo = (p) => p.photo || `/images/${p.image}.jpg`;
 function Brand() {
   return (
     <a className="brand" href="#inicio" aria-label="Korabel — início">
-      <img src="/images/logo-restaurada.png" alt="Korabel Modas" width="66" height="66" />
+      <img src={siteAsset("images/logo-restaurada.png")} alt="Korabel Modas" width="66" height="66" />
       <span>
         KORABEL<small>M O D A S</small>
       </span>
@@ -202,7 +203,7 @@ function App() {
       </header>
       <main>
         <section className="hero editorial-hero" id="inicio" aria-labelledby="hero-title">
-          <img className="editorial-image" src="/images/hero-editorial.png"
+          <img className="editorial-image" src={siteAsset("images/hero-editorial.png")}
             alt="Modelo sentada com vestido vinho em um cenário editorial de arcos rosados"
             fetchPriority="high" width="1672" height="941" />
           <div className="editorial-inner">
@@ -291,7 +292,7 @@ function App() {
           <div className="about container">
           <div className="about-picture">
             <img
-              src={photo(products.find(p => p.id === "amarelo"))}
+              src={siteAsset(photo(products.find(p => p.id === "amarelo")))}
               alt="Look amarelo ombro a ombro da coleção Korabel"
               loading="lazy"
               width="1086"
